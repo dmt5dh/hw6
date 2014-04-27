@@ -11,35 +11,32 @@ def a_star(start, finish, grid, wg, wh):
     closed_list = []
 
     open_list.put(start)
-    open_list2.append(start)
+    open_list2.append(start[2])
 
     while not open_list.empty():
         current_node = open_list.get()
-        open_list2.remove(current_node)
+        open_list2.remove(current_node[2])
 
         if current_node[2] == finish[2]:
             return current_node[1]  # correct return val?
 
         closed_list.append(current_node[2])
         neighbors_list = get_neighbors(current_node, grid)
-
+        # print 'cur', current_node
         for neighbor in neighbors_list:
-            # print (neighbor[2][0], neighbor[2][1])
-            # print closed_list
-            # print neighbor
             if neighbor[2] in closed_list:
                 continue
             given_cost = current_node[1] + 1
             neighbor_coord = neighbor[2]
 
-            if neighbor not in open_list2:
+            if neighbor[2] not in open_list2:
+                # print neighbor
                 final_cost = (wg * given_cost) + (wh * distance(neighbor, finish))
                 neighbor_add = (final_cost, given_cost, neighbor_coord)
                 open_list.put(neighbor_add)
-                open_list2.append(neighbor_add)
+                open_list2.append(neighbor_add[2])
 
     return None
-
 
 
 def get_neighbors(current, grid):
@@ -102,53 +99,35 @@ def main(argv):
     f = open(fn, 'r')
 
     num_cases = int(f.readline())
+    while num_cases > 0:
+        case_input = f.readline().split()
 
-    case_input = f.readline().split()
+        grid_width = int(case_input[0])
+        grid_height = int(case_input[1])
+        wg = float(case_input[2])
+        wh = float(case_input[3])
 
-    grid_width = int(case_input[0])
-    grid_height = int(case_input[1])
-    wg = float(case_input[2])
-    wh = float(case_input[3])
+        grid = []  # Every index is a row containing list of columns
 
-    grid = []  # Every index is a row containing list of columns
+        for h in range(0, grid_height):
+            row = list(f.readline().split('\n')[0])
+            grid.append(row)
 
-    for h in range(0, grid_height):
-        row = list(f.readline().split('\n')[0])
-        grid.append(row)
+        start = (0, 0, (0, 0))
+        finish = (0, 0, (0, 0))
 
-    start = (0, 0, (0, 0))
-    finish = (0, 0, (0, 0))
+        for i in grid:
+            for j in i:
+                if j == 'S':
+                    start = (0, 0, (grid.index(i), i.index(j)))
+                if j == 'F':
+                    finish = (0, 0, (grid.index(i), i.index(j)))
 
-    for i in grid:
-        for j in i:
-            if j == 'S':
-                start = (0, 0, (grid.index(i), i.index(j)))
-            if j == 'F':
-                finish = (0, 0, (grid.index(i), i.index(j)))
-
-    dist_sf = distance(start, finish)
-    start_cood = start[2]
-    start = (dist_sf, 0, start_cood)
-    # heap = Queue.PriorityQueue()
-    # heap.put((2.67, 3, (20, 3)))
-    # heap.put((1, 4, (1, 0)))
-    # heap.put((20, 0, (5, 9)))
-    # heap.put((5.9, 10, (2, 15)))
-    # heap.put((3.1, 9, (7, 3)))
-
-    # while not heap.empty():
-    #     print heap.get()
-    #
-    # print start
-    # print finish
-    # print wg
-    # print wh
-    print a_star(start, finish, grid, wg, wh)
-
-
-
-
-
+        dist_sf = distance(start, finish)
+        start_cood = start[2]
+        start = (dist_sf, 0, start_cood)
+        print a_star(start, finish, grid, wg, wh)
+        num_cases -= 1
 
 
 if __name__ == "__main__":
