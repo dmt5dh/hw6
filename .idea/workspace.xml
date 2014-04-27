@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02cc7720-1014-4a90-8f04-22defcdb4970" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hw6.py" afterPath="$PROJECT_DIR$/hw6.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="algo-hw6.iws" />
@@ -411,7 +410,11 @@
       <created>1398623526268</created>
       <updated>1398623526268</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added hw6.py">
+      <created>1398631523568</created>
+      <updated>1398631523568</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
