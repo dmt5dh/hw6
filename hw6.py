@@ -22,7 +22,6 @@ def a_star(start, finish, grid, wg, wh):
 
         closed_list.append(current_node[2])
         neighbors_list = get_neighbors(current_node, grid)
-        # print 'cur', current_node
         for neighbor in neighbors_list:
             if neighbor[2] in closed_list:
                 continue
@@ -44,7 +43,6 @@ def get_neighbors(current, grid):
     col_limit = len(grid[0])
 
     neighbors = []
-    # print current
     row_coord = current[2][0]
     col_coord = current[2][1]
     if row_coord + 1 < row_limit and col_coord + 1 < col_limit and row_coord + 1 >= 0 and col_coord + 1 >= 0:
@@ -85,8 +83,6 @@ def get_neighbors(current, grid):
 
 
 def distance(a, b):
-    # print a
-    # print b
     x = math.pow((b[2][0] - a[2][0]), 2)
     y = math.pow((b[2][1] - a[2][1]), 2)
     d = math.sqrt(x + y)
