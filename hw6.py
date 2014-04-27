@@ -24,7 +24,9 @@ def a_star(start, finish, grid, wg, wh):
         neighbors_list = get_neighbors(current_node, grid)
 
         for neighbor in neighbors_list:
-            print (neighbor[2][0], neighbor[2][1])
+            # print (neighbor[2][0], neighbor[2][1])
+            print closed_list
+            print neighbor
             if neighbor in closed_list:
                 continue
             given_cost = current_node[1] + 1
