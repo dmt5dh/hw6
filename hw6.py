@@ -20,14 +20,14 @@ def a_star(start, finish, grid, wg, wh):
         if current_node[2] == finish[2]:
             return current_node[1]  # correct return val?
 
-        closed_list.append(current_node)
+        closed_list.append(current_node[2])
         neighbors_list = get_neighbors(current_node, grid)
 
         for neighbor in neighbors_list:
             # print (neighbor[2][0], neighbor[2][1])
-            print closed_list
-            print neighbor
-            if neighbor in closed_list:
+            # print closed_list
+            # print neighbor
+            if neighbor[2] in closed_list:
                 continue
             given_cost = current_node[1] + 1
             neighbor_coord = neighbor[2]
