@@ -1,4 +1,4 @@
-20
+3
 81 51 0.5 0.5
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 X.......................X.......................................................X
